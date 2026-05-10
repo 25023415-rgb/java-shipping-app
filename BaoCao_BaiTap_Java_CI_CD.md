@@ -156,7 +156,7 @@ Hiệu quả thấy rõ ngay từ lần push thứ 2, đọc log xuất hiện d
 
 ---
 
-## 📌 PHẦN 2: Bắt Bug The Broken Pipeline (Bài 9 - Bài 10)
+## PHẦN 2: Bắt Bug The Broken Pipeline (Bài 9 - Bài 10)
 
 ### Bài 9: Triển khai Logging chuyên nghiệp
 Bỏ thói quen dùng `System.out.println()`, chuyển sang dùng SLF4J với Logback. 
@@ -219,7 +219,7 @@ public class AppLogService {
 
 Kịch bản là lấy code Bài 10 cho sẵn đẩy lên GitHub, và pipeline bị báo lỗi đỏ. Dưới đây là hành trình đọc log và sửa 3 lỗi:
 
-#### 🚨 Lỗi 1: Đòi build khi chưa có code
+#### Lỗi 1: Đòi build khi chưa có code
 - **Vị trí có vấn đề:** Tệp `.github/workflows/ci.yml`
 - **Tình trạng:** Trong tab Actions báo lỗi: `The goal you specified requires a project to execute but there is no POM in this directory (/).`
 - **Nhận ra là:** Máy ảo (runner) của GitHub lúc bật lên hoàn toàn rỗng. Workflow chạy lệnh `mvn package` trong khi chưa hề kéo code (checkout) từ repo về, dẫn đến Maven không tìm thấy file `pom.xml`.
@@ -232,13 +232,13 @@ Kịch bản là lấy code Bài 10 cho sẵn đẩy lên GitHub, và pipeline b
           # ...
   ```
 
-#### 🚨 Lỗi 2: Dependency "ảo ảnh"
+#### Lỗi 2: Dependency "ảo ảnh"
 - **Vị trí có vấn đề:** Tệp `pom.xml` (khai báo thư viện Logback)
 - **Tình trạng:** Log báo lỗi: `[ERROR] Could not resolve dependencies... ch.qos.logback:logback-classic:jar:9.9.9 was not found in...`
 - **Nhận ra là:** Version của Logback đang là `9.9.9`. Trên Maven Central không hề có bản này. Đây là một version ảo cố tình ghi sai.
 - **Cách fix:** Chỉnh lại thành phiên bản có thật, ví dụ `1.4.11`. Push code lên là Maven tải về được ngay.
 
-#### 🚨 Lỗi 3: Surefire Plugin cũ không hiểu Java 17
+#### Lỗi 3: Surefire Plugin cũ không hiểu Java 17
 - **Vị trí có vấn đề:** Tệp `pom.xml` (plugin `maven-surefire-plugin`)
 - **Tình trạng:** Chạy tới phase test thì sụp đổ với lỗi: `Execution default-test of goal... failed: Unsupported class file major version 61`
 - **Nhận ra là:** Plugin Surefire bản `2.12.4` phát hành từ hồi 2012. Nó quá cũ, không đọc được bytecode của Java 17 (major version 61) và cũng không chạy được code JUnit 5.
@@ -252,7 +252,7 @@ Kịch bản là lấy code Bài 10 cho sẵn đẩy lên GitHub, và pipeline b
   ```
 Sau khi sửa, Pipeline đã Xanh trở lại.
 
-#### 🛠️ Lỗi thứ 4: Tự tạo thêm lỗi logic code
+#### Lỗi thứ 4: Tự tạo thêm lỗi logic code
 Sau khi pipeline đã Passed, tự tạo thêm một lỗi xem hệ thống có bắt được không.
 
 - **Thao tác phá hoại:** Mở file `ShippingCalculator.java`, công thức tính phí EXPRESS đang là `return weight * 5000 + 20000;`. Cố tình trừ đi 10k, đổi thành `return weight * 5000 + 10000;`. Commit lên.
