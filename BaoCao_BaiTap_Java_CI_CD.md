@@ -1,13 +1,13 @@
 # Báo cáo Bài tập Lập trình Java & OOP (CI/CD, Code Quality)
 
-**Học viên:** [Điền tên]  
+**Học viên:** [Nguyễn Phúc Trọng]  
 **Môn học:** Lập trình Java & Hướng Đối Tượng (OOP)
 
 Dưới đây là phần bài làm và báo cáo thực hành cho các bài tập từ Bài 1 đến Bài 10. Quá trình làm bài bao gồm cài đặt môi trường ở máy cá nhân, tạo repository trên GitHub và debug lỗi của pipeline.
 
 ---
 
-## 📌 PHẦN 1: Cấu Hình & CI/CD (Bài 1 - Bài 8)
+## PHẦN 1: Cấu Hình & CI/CD (Bài 1 - Bài 8)
 
 ### Bài 1: Quản lý Dependency với Maven
 **Yêu cầu:** Nâng cấp file `pom.xml` cũ, thêm thư viện mới và sửa lỗi xung đột.
